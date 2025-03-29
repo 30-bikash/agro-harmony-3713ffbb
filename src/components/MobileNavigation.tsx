@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Leaf, BarChart3, ShoppingBasket, Cloud, AlertCircle, Settings, Menu, X } from "lucide-react";
+import { Leaf, BarChart3, ShoppingBasket, Cloud, AlertCircle, Settings, Menu, X, Zap } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const MobileNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,25 +15,29 @@ const MobileNavigation = () => {
     { name: "Marketplace", path: "/marketplace", icon: <ShoppingBasket className="h-5 w-5" /> },
     { name: "Weather & Soil", path: "/weather-soil", icon: <Cloud className="h-5 w-5" /> },
     { name: "Pest Detection", path: "/pests", icon: <AlertCircle className="h-5 w-5" /> },
+    { name: "IoT Services", path: "/iot", icon: <Zap className="h-5 w-5" /> },
     { name: "Settings", path: "/settings", icon: <Settings className="h-5 w-5" /> },
   ];
 
   return (
     <div className="md:hidden">
-      <div className="flex items-center justify-between bg-white shadow-sm px-4 py-3">
+      <div className="flex items-center justify-between bg-card shadow-sm px-4 py-3">
         <div className="flex items-center gap-2">
           <div className="bg-agro-green-dark text-white p-1 rounded-lg">
             <Leaf className="h-5 w-5" />
           </div>
           <h1 className="font-bold text-lg">AgroHarmony</h1>
         </div>
-        <button onClick={() => setIsOpen(!isOpen)} className="p-2">
-          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <button onClick={() => setIsOpen(!isOpen)} className="p-2">
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
       
       {isOpen && (
-        <div className="absolute top-[60px] left-0 w-full z-50 bg-white shadow-md border-b border-gray-200">
+        <div className="absolute top-[60px] left-0 w-full z-50 bg-card shadow-md border-b border-border">
           <div className="p-2 space-y-1">
             {links.map((link) => (
               <Link

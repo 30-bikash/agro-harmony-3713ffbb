@@ -2,7 +2,8 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Leaf, BarChart3, ShoppingBasket, Cloud, AlertCircle, Settings } from "lucide-react";
+import { Leaf, BarChart3, ShoppingBasket, Cloud, AlertCircle, Settings, Zap } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Navigation = () => {
   const location = useLocation();
@@ -13,11 +14,12 @@ const Navigation = () => {
     { name: "Marketplace", path: "/marketplace", icon: <ShoppingBasket className="h-5 w-5" /> },
     { name: "Weather & Soil", path: "/weather-soil", icon: <Cloud className="h-5 w-5" /> },
     { name: "Pest Detection", path: "/pests", icon: <AlertCircle className="h-5 w-5" /> },
+    { name: "IoT Services", path: "/iot", icon: <Zap className="h-5 w-5" /> },
     { name: "Settings", path: "/settings", icon: <Settings className="h-5 w-5" /> },
   ];
 
   return (
-    <nav className="hidden md:block bg-white shadow-md rounded-lg p-4 h-full">
+    <nav className="hidden md:block bg-card shadow-md rounded-lg p-4 h-full">
       <div className="flex items-center gap-3 mb-8 px-2">
         <div className="bg-agro-green-dark text-white p-2 rounded-lg">
           <Leaf className="h-6 w-6" />
@@ -44,6 +46,10 @@ const Navigation = () => {
             {link.name}
           </Link>
         ))}
+      </div>
+      
+      <div className="mt-auto pt-4 border-t border-border mt-6 flex justify-end">
+        <ThemeToggle />
       </div>
     </nav>
   );

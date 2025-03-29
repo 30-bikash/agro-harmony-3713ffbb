@@ -6,8 +6,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useTheme } from "@/components/ThemeProvider";
+import { Moon, Sun } from "lucide-react";
 
 const Settings = () => {
+  const { theme, setTheme } = useTheme();
+
   return (
     <MainLayout>
       <div className="space-y-6">
@@ -169,7 +173,14 @@ const Settings = () => {
                         Switch between light and dark themes
                       </p>
                     </div>
-                    <Switch />
+                    <div className="flex items-center gap-2">
+                      <Sun className="h-4 w-4 text-muted-foreground" />
+                      <Switch 
+                        checked={theme === "dark"}
+                        onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
+                      />
+                      <Moon className="h-4 w-4 text-muted-foreground" />
+                    </div>
                   </div>
                   
                   <div className="flex items-center justify-between">
