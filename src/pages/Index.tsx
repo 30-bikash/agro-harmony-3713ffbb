@@ -5,7 +5,7 @@ import CropHealthChart from "@/components/dashboard/CropHealthChart";
 import MarketPriceChart from "@/components/dashboard/MarketPriceChart";
 import WeatherWidget from "@/components/dashboard/WeatherWidget";
 import PestAlertWidget from "@/components/dashboard/PestAlertWidget";
-import { Leaf, TrendingUp, ShoppingBasket, Users } from "lucide-react";
+import { Leaf, TrendingUp, ShoppingBasket, Users, AlertCircle } from "lucide-react";
 
 const Index = () => {
   return (
