@@ -12,14 +12,13 @@ import PestDetection from "./pages/PestDetection";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
+// Create a client
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+  <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/crops" element={<CropMonitoring />} />
@@ -29,9 +28,11 @@ const App = () => (
           <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+        <Toaster />
+        <Sonner />
+      </TooltipProvider>
+    </QueryClientProvider>
+  </BrowserRouter>
 );
 
 export default App;
